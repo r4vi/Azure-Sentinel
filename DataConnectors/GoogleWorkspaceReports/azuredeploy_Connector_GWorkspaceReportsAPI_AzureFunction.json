@@ -16,9 +16,13 @@
             "type": "securestring",
             "defaultValue": "<workspaceKey>"
         },
-        "GooglePickleString": {
+        "ServiceAccountFileContent": {
             "type": "securestring",
-            "defaultValue": "<GooglePickleString>"
+            "defaultValue": "<ServiceAccountFileContent>"
+        },
+        "Subject": {
+            "type": "string",
+            "defaultValue": "<workspaceID>"
         }
     },
     "variables": {
@@ -147,9 +151,10 @@
                         "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', toLower(variables('FunctionName')),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower(variables('FunctionName'))), '2019-06-01').keys[0].value, ';EndpointSuffix=',toLower(variables('StorageSuffix')))]",
                         "WorkspaceID": "[parameters('WorkspaceID')]",
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
-                        "GooglePickleString": "[parameters('GooglePickleString')]",
+                        "ServiceAccountFileContent": "[parameters('ServiceAccountFileContent')]",
+                        "Subject": "[parameters('Subject')]",
                         "logAnalyticsUri": "[variables('LogAnaltyicsUri')]",
-                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/GoogleWorkspaceReports/GWorkspaceReportsAPISentinelConn.zip?raw=true"
+                        "WEBSITE_RUN_FROM_PACKAGE": "1"
                     }
                 }
             ]
